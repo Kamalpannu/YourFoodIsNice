@@ -1,115 +1,105 @@
-import Image from "next/image";
-import localFont from "next/font/local";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// pages/index.js
+import { useRouter } from "next/router";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
-  return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  // Navigate to Sign In page
+  const handleSignInClick = () => {
+    router.push("/Signin");
+  };
+
+  // Navigate to Sign Up page
+  const handleSignUpClick = () => {
+    router.push("/SignUp");
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-10 px-6">
+      <div className="max-w-4xl mx-auto">
+        {/* App Introduction */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Welcome to YourFoodIsGood
+          </h1>
+          <p className="text-lg text-gray-600">
+            Discover, share, and buy homemade food. Connect with food lovers in
+            your community!
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Features Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Feature 1 */}
+          <Card className="transition duration-200 ease-in-out transform hover:scale-105">
+            <CardHeader>
+              <CardTitle>Post Your Food</CardTitle>
+              <CardDescription>
+                Share your delicious creations with the community.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Upload pictures and get AI descriptions of your homemade dishes for
+                others to explore.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Feature 2 */}
+          <Card className="transition duration-200 ease-in-out transform hover:scale-105">
+            <CardHeader>
+              <CardTitle>Connect Through Comments</CardTitle>
+              <CardDescription>
+                Engage with food enthusiasts and potential buyers.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Share feedback, ask questions, and build connections with
+                others who share your passion for food.
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Feature 3 */}
+          <Card className="transition duration-200 ease-in-out transform hover:scale-105">
+            <CardHeader>
+              <CardTitle>Buy & Enjoy</CardTitle>
+              <CardDescription>
+                Find homemade meals you’ll love.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600 ">
+                Browse posts, chat with sellers, and buy dishes directly from
+                the app.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center mt-12 space-y-4">
+          <p className="text-lg text-gray-600">Ready to join the community?</p>
+          <div className="flex justify-center gap-6">
+            <Button
+              onClick={handleSignInClick}
+              className="bg-blue-600 text-white py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-200 ease-in-out transform hover:scale-105"
+            >
+              Sign In
+            </Button>
+            <Button
+              onClick={handleSignUpClick}
+              className="bg-green-600 text-white py-3 px-8 rounded-full shadow-lg hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105"
+            >
+              Sign Up
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
